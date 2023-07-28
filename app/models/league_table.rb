@@ -23,7 +23,7 @@ class LeagueTable < ApplicationRecord
   end
 
   def get_points(team_name)
-    @team.points
+    Team.find_or_create_by(name: team_name).points
   end
 
   def get_goals_for(team_name)
