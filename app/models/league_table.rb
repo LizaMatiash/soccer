@@ -22,6 +22,32 @@ class LeagueTable < ApplicationRecord
     )
   end
 
+  def get_points(team_name)
+    @team.points
+  end
 
+  def get_goals_for(team_name)
+    Team.find_or_create_by(name: team_name).scored_goals
+  end
+
+  def get_goals_against(team_name)
+    Team.find_or_create_by(name: team_name).conceeded_goals
+  end
+
+  def get_goal_difference(team_name)
+    get_goals_for(team_name) - get_goals_against(team_name)
+  end
+
+  def get_wins(team_name)
+    Team.find_or_create_by(name: team_name).wins
+  end
+
+  def get_draws(team_name)
+    Team.find_or_create_by(name: team_name).draws
+  end
+
+  def get_losses(team_name)
+    Team.find_or_create_by(name: team_name).loses
+  end
 
 end
